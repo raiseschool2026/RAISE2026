@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>RAISE 2026 | Robotics & AI in Systems Engineering | Smart Agriculture Workshop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f4fbf9;
+            color: #1a2e2a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* STICKY NAVIGATION BUTTONS BAR */
+        .nav-buttons-bar {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 48, 41, 0.96);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            padding: 0.9rem 1rem;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #2a7f6e;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.7rem;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1.5px solid #50b2a0;
+            color: #e0f2ee;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.5rem 1.1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-btn:hover {
+            background: #2a7f6e;
+            border-color: #c0e8e0;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:active {
+            transform: translateY(0);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* section spacing */
+        .section {
+            scroll-margin-top: 90px;
+            margin: 3rem 0 2.5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            border-left: 7px solid #2a7f6e;
+            padding-left: 1.2rem;
+            color: #145c4b;
+        }
+
+        /* HERO */
+        .hero-split {
+            background: linear-gradient(125deg, #0a3029 0%, #1b5e4f 100%);
+            color: white;
+            padding: 2.5rem 0;
+            border-bottom-left-radius: 2rem;
+            border-bottom-right-radius: 2rem;
+        }
+
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-content {
+            flex: 1.2;
+            min-width: 260px;
+        }
+
+        .hero-image {
+            flex: 0.8;
+            min-width: 220px;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.35);
+            border: 2px solid rgba(255,255,240,0.3);
+            background: #fef9e8;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.02);
+        }
+
+        .hero-badge {
+            background: rgba(255,255,240,0.2);
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .btn-register {
+            background: #f5a623;
+            color: #1d3e35;
+            padding: 0.8rem 2rem;
+            font-weight: 800;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+            transition: 0.2s;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-register:hover {
+            background: #ffb347;
+            transform: translateY(-2px);
+        }
+
+        .call-for-participants {
+            background: #fff7e8;
+            border-left: 6px solid #f5a623;
+            margin-top: 1.8rem;
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .call-text {
+            font-weight: 600;
+            color: #2c5a4a;
+        }
+
+        .call-btn {
+            background: #2a7f6e;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .call-btn:hover {
+            background: #1b5e4f;
+            transform: scale(1.02);
+        }
+
+        /* CARDS */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 1.5rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.6rem;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: 0.2s;
+            border: 1px solid #dde9e5;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card h3 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #1e6b5a;
+        }
+
+        /* SCHEDULE */
+        .schedule-wrapper {
+            background: white;
+            border-radius: 1.5rem;
+            overflow-x: auto;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
+            border: 1px solid #deece8;
+        }
+
+        .day-block {
+            border-bottom: 1px solid #e2efeb;
+        }
+
+        .day-title {
+            background: #eff6f3;
+            padding: 1rem 1.5rem;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #0f5e4d;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid #eef2f0;
+            vertical-align: top;
+        }
+
+        th {
+            background: #fafefc;
+            font-weight: 700;
+            color: #196355;
+        }
+
+        .time-col {
+            font-weight: 600;
+            width: 30%;
+            color: #1b5a4b;
+        }
+
+        .highlight-bg {
+            background: #fff7e8;
+        }
+
+        /* COMMITTEES */
+        .committees-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .committee-card {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1.2rem;
+            flex: 1;
+            min-width: 200px;
+            border: 1px solid #cde3dd;
+        }
+
+        .contact-block {
+            background: #eef4f1;
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        /* PARTNERS LOGOS SECTION */
+        .partners-logos {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: 1px solid #d2e6e0;
+            margin: 1.5rem 0;
+        }
+        .logos-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            margin-top: 1.5rem;
+        }
+        .logo-item {
+            flex: 0 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffffff;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            transition: all 0.2s;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.05));
+        }
+        .logo-item img {
+            max-height: 70px;
+            max-width: 130px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.2s;
+        }
+        .logo-item img:hover {
+            transform: scale(1.05);
+        }
+        @media (max-width: 700px) {
+            .logos-grid { gap: 1.2rem; }
+            .logo-item img { max-height: 55px; max-width: 100px; }
+        }
+
+        .footer {
+            background: #092c25;
+            color: #cfece5;
+            margin-top: 3rem;
+            padding: 2rem 0;
+            border-radius: 2rem 2rem 0 0;
+            text-align: center;
+        }
+
+        /* PDF MODAL */
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+        }
+        .pdf-modal-content {
+            background: white;
+            width: 90%;
+            max-width: 1000px;
+            height: 85%;
+            border-radius: 1rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.3);
+        }
+        .pdf-modal-header {
+            padding: 0.8rem 1rem;
+            background: #1b5e4f;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .pdf-modal-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .pdf-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        @media (max-width: 750px) {
+            .nav-btn { padding: 0.4rem 0.9rem; font-size: 0.7rem; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .section-title { font-size: 1.7rem; }
+            .hero-grid { flex-direction: column; text-align: center; }
+            .call-for-participants { flex-direction: column; text-align: center; }
+            .pdf-modal-content { width: 95%; height: 80%; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- BUTTONS NAVIGATION BAR -->
+<div class="nav-buttons-bar">
+    <div class="nav-container">
+        <button class="nav-btn" data-section="hero-top">🏠 Home</button>
+        <button class="nav-btn" data-section="about">📖 About</button>
+        <button class="nav-btn" data-section="program">📅 Program</button>
+        <button class="nav-btn" data-section="speakers">🎤 Speakers</button>
+        <button class="nav-btn" data-section="committees">🧑‍💻 Committees</button>
+        <button class="nav-btn" data-section="why-attend">💡 Why Attend</button>
+        <button class="nav-btn" data-section="register">📝 Register</button>
+        <button class="nav-btn" data-section="partners">🤝 Partners</button>
+    </div>
+</div>
+
+<!-- HERO SECTION -->
+<div id="hero-top" class="hero-split" style="scroll-margin-top: 70px;">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">✨ RESDA Workshop | 14–16 July 2026, Tunisia</div>
+                <h1>RAISE 2026</h1>
+                <div style="font-size:1.2rem; font-weight: 500; margin: 0.5rem 0;">2nd Workshop on Robotics & Artificial Intelligence in Systems Engineering</div>
+                <p style="font-size:1.05rem; margin-top: 0.8rem;"><strong>Theme:</strong> Agnetic Robotics & VLA Models for Smart Agriculture — From LLM-driven greenhouse inspection to end-to-end robotic manipulation.</p>
+                <a href="#register-section" class="btn-register" id="heroRegisterBtn">📋 REGISTER NOW →</a>
+                <div style="margin-top: 1.2rem;">
+                    🌐 Official website: <a href="https://raiseschool026.github.io/RAISE2026/" target="_blank" style="color:#ffdc97; text-decoration:underline;">raiseschool026.github.io/RAISE2026/</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img id="callPosterImage" src="affiche.png"
+                     alt="RAISE 2026 Call for Participants flyer"
+                     style="max-width:100%; background: white; border-radius: 1.2rem; box-shadow: 0 15px 30px rgba(0,0,0,0.25); cursor: pointer;"
+                     title="Click to view Call for Participants PDF">
+                <p style="font-size:0.7rem; margin-top: 8px; opacity:0.9;"></p>
+            </div>
+        </div>
+        <div class="call-for-participants">
+            <button id="callPdfBtn" class="call-btn">🎯 View full Call for Participants (PDF) →</button>
+        </div>
+    </div>
+</div>
+
+<!-- PDF MODAL -->
+<div id="pdfModal" class="pdf-modal">
+    <div class="pdf-modal-content">
+        <div class="pdf-modal-header">
+            <h3>📄 RAISE 2026 – Call for Participants</h3>
+            <button class="close-modal" id="closePdfModalBtn">&times;</button>
+        </div>
+        <iframe id="pdfIframe" class="pdf-iframe" src="" title="RAISE 2026 Call for Participants PDF"></iframe>
+    </div>
+</div>
+
+<div class="container">
+    
+    <!-- SECTION 1: ABOUT -->
+    <div id="about" class="section">
+        <div class="section-title">🌿 About RAISE 2026</div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <h3>Vision & Goal</h3>
+                <p>Hands‑on workshop merging Agnetic Robotics (LLM-driven) and VLA models for sustainable agriculture. The robot autonomously inspects greenhouses, generates field reports, and acts via natural language.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📅</div>
+                <h3>Dates & Venue</h3>
+                <p>14–16 July 2026 · ISGIS, Tunisia.<br>Organized by <strong>RESDA</strong> (Renewable Energy & Sustainable Development Association).</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🏆</div>
+                <h3>Final Hackathon</h3>
+                <p>Day 3: Competition — Combine planner (LLM) + executor (VLA) into one end-to-end agnetic system. Prizes & recognition.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: PROGRAM -->
+    <div id="program" class="section">
+        <div class="section-title">📆 Workshop Program Highlights</div>
+        <div class="schedule-wrapper">
+            <div class="day-block">
+                <div class="day-title">📌 DAY 1 – July 14, 2026 · Agnetic Robotics: Making the Robot Think</div>
+                <table>
+                    <thead><tr><th>Time</th><th>Activity</th></tr></thead>
+                    <tbody>
+                        <tr><td class="time-col">8:00 – 8:30</td><td>Registration</td></tr>
+                        <tr><td class="time-col">8:30 – 9:00</td><td>Opening Ceremony</td></tr>
+                        <tr><td class="time-col">9:00 – 9:45</td><td><strong>Metaheuristics for robots path planning</strong> – Prof. Souhail Dhouib (ISGIS)</td></tr>
+                        <tr><td class="time-col">9:45 – 10:30</td><td><strong>Keynote: Topic TBA</strong> – Prof. Adel Alimi (ENIS)</td></tr>
+                        <tr><td class="time-col">10:30 – 11:00</td><td>Coffee break + Group photo</td></tr>
+                        <tr><td class="time-col">11:00 – 12:30</td><td><strong>Lecture 1</strong> – Prof. Anis Koubaa (Alfaisal University / ScaleX Innovation) – LLM-driven navigation</td></tr>
+                        <tr><td class="time-col">12:30 – 14:00</td><td>Lunch</td></tr>
+                        <tr><td class="time-col">14:00 – 18:00</td><td><strong>Hands‑on Lab</strong> – LLM-driven robot inspects greenhouse & generates structured field report</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-title">📌 DAY 2 – July 15, 2026 · Vision-Language-Action: Making the Robot Act</div>
+                <table>
+                    <thead><tr><th>Time</th><th>Activity</th></tr></thead>
+                    <tbody>
+                        <tr><td class="time-col">9:00 – 10:30</td><td><strong>Lecture 2.1</strong> – Prof. Anis Koubaa : VLA architectures for robotic manipulation</td></tr>
+                        <tr><td class="time-col">10:30 – 11:00</td><td>Coffee break</td></tr>
+                        <tr><td class="time-col">11:00 – 12:30</td><td><strong>Lecture 2.2</strong> – Prof. Anis Koubaa : hosted VLA endpoints & natural-language execution</td></tr>
+                        <tr><td class="time-col">12:30 – 14:00</td><td>Lunch</td></tr>
+                        <tr><td class="time-col">14:00 – 18:00</td><td><strong>Hands‑on Lab</strong> – Robot executes manipulation instructions via VLA model</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="day-block">
+                <div class="day-title">📌 DAY 3 – July 16, 2026 · Integration & Hackathon COMPETITION</div>
+                <table>
+                    <thead><tr><th>Time</th><th>Activity</th></tr></thead>
+                    <tbody>
+                        <tr><td class="time-col">9:00 – 10:30</td><td><strong>Lecture 3.1</strong> – Prof. Anis Koubaa : end-to-end agnetic system design</td></tr>
+                        <tr><td class="time-col">10:30 – 11:00</td><td>Coffee break</td></tr>
+                        <tr><td class="time-col">11:00 – 12:30</td><td><strong>Lecture 3.2</strong> – Prof. Anis Koubaa : integration of planner + VLA executor</td></tr>
+                        <tr><td class="time-col">12:30 – 14:00</td><td>Lunch</td></tr>
+                        <tr><td class="highlight-bg">14:00 – 17:00</td><td class="highlight-bg"><strong>🚀 HACKATHON COMPETITION</strong> – Build a complete agnetic robot system: inspect & act!</td></tr>
+                        <tr><td class="time-col">17:00 – 18:00</td><td><strong>Rewards & Closing</strong> – Prize ceremony & closing remarks</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <p style="margin-top: 1rem; font-style:italic; text-align:center;">⚡ Hands-on labs involve real coding, simulation, and VLA endpoints. Come ready to innovate!</p>
+    </div>
+
+    <!-- SECTION 3: SPEAKERS -->
+    <div id="speakers" class="section">
+        <div class="section-title">🎤 Guest Speakers & Keynotes</div>
+        <div class="card-grid">
+            <div class="card"><span style="background:#E0F2EE; padding:0.2rem 0.8rem; border-radius:20px; font-size:0.7rem; font-weight:600;">Main Lecturer</span><h3>Prof. Anis Koubaa</h3><p>Alfaisal University (KSA) / ScaleX Innovation – Leading expert in cloud robotics, VLA, and AI for autonomous systems.</p></div>
+            <div class="card"><span style="background:#E0F2EE; padding:0.2rem 0.8rem; border-radius:20px;">Metaheuristics</span><h3>Prof. Souhail Dhouib</h3><p>ISGIS – Path planning optimization, robotics & intelligent search.</p></div>
+            <div class="card"><span style="background:#E0F2EE; padding:0.2rem 0.8rem; border-radius:20px;">AI Pioneer</span><h3>Prof. Adel Alimi</h3><p>ENIS – Advanced AI, intelligent systems & cognitive robotics.</p></div>
+        </div>
+    </div>
+
+    <!-- SECTION 4: COMMITTEES -->
+    <div id="committees" class="section">
+        <div class="section-title">🧑‍💻 Committees & Organization</div>
+        <div class="committees-flex">
+            <div class="committee-card"><strong>🌟 General Chair</strong><br>Houssam Choukhi (ISSIG / LASEM)<br><strong>🌟 General Co-chair</strong><br>Omar Cheikhrouhou (ENETCOM/CES)</div>
+            <div class="committee-card"><strong>🏅 Honorary Chairs</strong><br>Prof. Hatem Bentaher (ISGIS/LASEM)<br>Prof. Mouna Baklouti (ENIS/CES)</div>
+            <div class="committee-card"><strong>⚙️ Steering Committee</strong><br>Prof. Anis Koubaa<br> Prof. Hatem Bentaher<br>Omar Cheikhrouhou<br> Houssam Choukhi<br> Nidhal Ayadi</div>
+        </div>
+        <div class="committee-card" style="margin-top: 1rem;">
+            <strong>🤝 Organizing Committee:</strong> <br>Prof. Hatem Bentaher<br> Prof. Ahmed Elloumi<br> Prof. Mouna Baklouti<br> Nidhal Ayadi<br> Seif Hadrich<br> Amira Echtioui<br> Olfa Gaddour<br> Manel Hentati<br> Yassine Aydi<br> Bassem Hadjikacem<br> Atidel Ghorbel<br> Zeineb Boumallessa.
+        </div>
+        <p style="margin-top: 0.7rem;">🔬 In collaboration with RESDA, LASEM, CES, ENETCOM, ISGIS, BlueBox Lab, ATMS.</p>
+    </div>
+
+    <!-- SECTION 5: WHY ATTEND -->
+    <div id="why-attend" class="section">
+        <div class="section-title">💡 Why Attend RAISE 2026?</div>
+        <div class="card-grid">
+            <div class="card"><div class="card-icon">🤝</div><h3>Network</h3><p>Connect with international experts from Alfaisal University, ENIS, ISGIS, and industry partners.</p></div>
+            <div class="card"><div class="card-icon">🚀</div><h3>Innovate</h3><p>Explore state‑of‑the‑art VLA models and LLM‑driven agnetic robotics for smart agriculture.</p></div>
+            <div class="card"><div class="card-icon">🌾</div><h3>Impact</h3><p>Advance sustainable agriculture with real‑world robotics & AI solutions.</p></div>
+            <div class="card"><div class="card-icon">🏅</div><h3>Compete</h3><p>Participate in the hackathon challenge and win recognition & prizes.</p></div>
+            <div class="card"><div class="card-icon">🔧</div><h3>Collaborate</h3><p>Build partnerships for future projects in systems engineering and agri‑robotics.</p></div>
+        </div>
+    </div>
+
+    <!-- SECTION 6: REGISTRATION -->
+    <div id="register-section" class="section">
+        <div class="section-title">📝 Register Now — Secure Your Spot</div>
+        <div class="contact-block">
+            <div style="flex:2">
+                <h3 style="color: #175e4d; font-size: 1.6rem;">Registration Form</h3>
+                <p>Early registration includes full access to all lectures, hands‑on labs, hackathon competition, and participation certificate. Limited seats available.</p>
+                <a href="https://forms.gle/ANibdzjuHg7HCpGu5" target="_blank" class="btn-register" style="background: #2a7f6e; color:white; box-shadow: none; margin-top: 0.5rem; display: inline-flex;">📋 Go to Registration Form →</a>
+                <p style="margin-top: 1rem;">🔗 Direct link: <a href="https://forms.gle/ANibdzjuHg7HCpGu5" target="_blank">https://forms.gle/ANibdzjuHg7HCpGu5</a></p>
+                <p>✉️ Contact: <a href="mailto:raiseschool2026@gmail.com">raiseschool2026@gmail.com</a> &nbsp;|&nbsp; 📍 ISGIS, Tunisia</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 7: PARTNERS & SPONSORS with logos (agrirobot.png, ces.webp, ichrak.png, isgi.png, lazem.png, must.png, scaleX.png, us.png) -->
+    <div id="partners" class="section">
+        <div class="section-title">🤝 Our Partners & Sponsors</div>
+        <div class="partners-logos">
+            <p style="margin-bottom: 0.5rem; font-weight: 500;">Proudly supported by leading academic and industry institutions</p>
+            <div class="logos-grid">
+                <div class="logo-item"><img src="agrirobot.png" alt="AgriRobot" onerror="this.src='https://placehold.co/120x60?text=AgriRobot'"></div>
+                <div class="logo-item"><img src="ces.webp" alt="CES" onerror="this.src='https://placehold.co/120x60?text=CES'"></div>
+                <div class="logo-item"><img src="ichrak.png" alt="Ichrak" onerror="this.src='https://placehold.co/120x60?text=Ichrak'"></div>
+                <div class="logo-item"><img src="isgi.png" alt="ISGI" onerror="this.src='https://placehold.co/120x60?text=ISGI'"></div>
+                <div class="logo-item"><img src="lazem.png" alt="LAZEM" onerror="this.src='https://placehold.co/120x60?text=LAZEM'"></div>
+                <div class="logo-item"><img src="must.jpg" alt="MUST" onerror="this.src='https://placehold.co/120x60?text=MUST'"></div>
+                <div class="logo-item"><img src="scaleX.png" alt="ScaleX" onerror="this.src='https://placehold.co/120x60?text=ScaleX'"></div>
+                <div class="logo-item"><img src="us.png" alt="University of Sousse" onerror="this.src='https://placehold.co/120x60?text=US'"></div>
+            </div>
+            <p style="margin-top: 1.5rem; font-size: 0.85rem; color: #3e6b5e;">* Partners and sponsors committed to advancing robotics and sustainable agriculture.</p>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="container">
+        <p style="font-weight: 800; font-size: 1.2rem;">RAISE 2026 – Robotics & AI in Systems Engineering</p>
+        <p>📅 14–16 July 2026 · ISGIS, Tunisia | ✉️ raiseschool2026@gmail.com</p>
+        <p>🌐 <a href="https://raiseschool026.github.io/RAISE2026/" target="_blank" style="color:#ffda99;">raiseschool026.github.io/RAISE2026/</a> · #RAISE2026 #AgneticRobotics #SmartAgriculture</p>
+        <p style="margin-top: 1rem; font-size:0.8rem;">© 2026 RESDA – All rights reserved. International workshop on robotics & AI for intelligent systems.</p>
+    </div>
+</div>
+
+<!-- JavaScript for PDF display and smooth scrolling -->
+<script>
+    (function() {
+        const pdfPath = "Call_RAISE 2026.pdf";
+        const modal = document.getElementById('pdfModal');
+        const pdfIframe = document.getElementById('pdfIframe');
+        const closeBtn = document.getElementById('closePdfModalBtn');
+        
+        function openPdfModal() {
+            pdfIframe.src = pdfPath;
+            modal.style.display = 'flex';
+        }
+        function closeModal() {
+            modal.style.display = 'none';
+            pdfIframe.src = '';
+        }
+        const callButton = document.getElementById('callPdfBtn');
+        if(callButton) callButton.addEventListener('click', (e) => { e.preventDefault(); openPdfModal(); });
+        const posterImage = document.getElementById('callPosterImage');
+        if(posterImage) posterImage.addEventListener('click', () => { openPdfModal(); });
+        if(closeBtn) closeBtn.addEventListener('click', closeModal);
+        window.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+        
+        function scrollToSection(sectionId) {
+            const target = document.getElementById(sectionId);
+            if (target) {
+                const offset = 90;
+                const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+            }
+        }
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const sectionName = btn.getAttribute('data-section');
+                if (sectionName === 'hero-top') window.scrollTo({ top: 0, behavior: 'smooth' });
+                else scrollToSection(sectionName);
+            });
+        });
+        const heroReg = document.getElementById('heroRegisterBtn');
+        if(heroReg) heroReg.addEventListener('click', (e) => { e.preventDefault(); scrollToSection('register-section'); });
+    })();
+</script>
+</body>
+</html>
